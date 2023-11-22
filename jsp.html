@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>计算器</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+}
+      body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+}
+        #calculator {
+        width: 100%;
+      }
+      table {
+        margin: 0 auto;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      td {
+        padding: 5px;
+        text-align: center;
+        border: 1px solid black;
+      }
+      input[type="button"] {
+        width: 100%;
+        height: 100%;
+      }
+      #result {
+    text-align: right;
+    font-size: 100px;
+    padding: 1px;
+    margin-bottom: 1px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+      #expression {
+        text-align: right;
+        font-size: 45px;
+        padding: 5px;
+        width: 100%;
+        box-sizing: border-box;
+     
+ }
+  .rounded-button {
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 16px;
+  } 
+</style>
+ </head>
+  <body>
+    <div id="calculator">
+      <table>
+        <tr>
+          <td colspan="4">
+            <input type="text" id="result" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <input type="text" id="expression" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="button" value="7" onclick="updateDisplay(7)" class="rounded-button"></td>
+  <td><input type="button" value="8" onclick="updateDisplay(8)" class="rounded-button"></td>
+  <td><input type="button" value="9" onclick="updateDisplay(9)" class="rounded-button"></td>
+  <td><input type="button" value="÷" onclick="updateDisplay('/')" class="rounded-button"></td>
+</tr>
+<tr>
+  <td><input type="button" value="4" onclick="updateDisplay(4)" class="rounded-button"></td>
+  <td><input type="button" value="5" onclick="updateDisplay(5)" class="rounded-button"></td>
+  <td><input type="button" value="6" onclick="updateDisplay(6)" class="rounded-button"></td>
+  <td><input type="button" value="×" onclick="updateDisplay('*')" class="rounded-button"></td>
+</tr>
+<tr>
+  <td><input type="button" value="1" onclick="updateDisplay(1)" class="rounded-button"></td>
+  <td><input type="button" value="2" onclick="updateDisplay(2)" class="rounded-button"></td>
+  <td><input type="button" value="3" onclick="updateDisplay(3)" class="rounded-button"></td>
+  <td><input type="button" value="-" onclick="updateDisplay('-')" class="rounded-button"></td>
+</tr>
+<tr>
+  <td><input type="button" value="0" onclick="updateDisplay(0)" class="rounded-button"></td>
+  <td><input type="button" value="." onclick="updateDisplay('.')" class="rounded-button"></td>
+  <td><input type="button" value="=" onclick="calculate()" class="rounded-button"></td>
+  <td><input type="button" value="+" onclick="updateDisplay('+')" class="rounded-button"></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input type="button" value="C" onclick="clearDisplay()">
+          </td>
+          <td colspan="2">
+            <input type="button" value="&larr;" onclick="backspace()">
+          </td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      var displayValue = '';
+      function updateDisplay(value) {
+        displayValue += value;
+        document.getElementById('result').value = displayValue;
+      }
+      function calculate() {
+        try {
+          var result = eval(displayValue);
+          document.getElementById('result').value = result;
+          document.getElementById('expression').value = displayValue + ' =';
+          displayValue = result;
+        } catch (错误) {
+          document.getElementById('result').value = '错误';
+        }
+      }
+      function clearDisplay() {
+        displayValue = '';
+        document.getElementById('result').value = '';
+        document.getElementById('expression').value = '';
+      }
+      function backspace() {
+        displayValue = displayValue.slice(0, -1);
+        document.getElementById('result').value = displayValue;
+      }
+    </script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</body>
+</html>
